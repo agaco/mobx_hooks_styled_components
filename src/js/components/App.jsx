@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { shallowEqual, useSelector } from 'react-redux';
 import styled from 'styled-components';
+
 
 import CommonContainer from '../CommonComponents/Container';
 import Header from './Header';
 import Main from './MainComponent'
 
-import { fetchData } from '../../api/config';
+import { fetchData, getSources } from '../../api/config';
 
 
 const Container = styled(CommonContainer)`
@@ -20,13 +22,18 @@ function App() {
 
   useEffect(() => {
     // fetch('https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=f3907ccd45504feea10309a6931c52d8')
-    fetchData()
-      // .then(res => console.log(res));
+    // fetchData()
+    // getSources()
+    //   .then(res => console.log(res));
   });
 
+  const news = useSelector(state => state.news);
 
   return (
     <Container>
+      {
+        console.log(news)
+      }
       <Header />
       <Main />
     </Container>

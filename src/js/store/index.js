@@ -1,10 +1,13 @@
-// eslint-disable-next-line prop-types
-import dataStore from './dataStore';
-import uiStore from './uiStore';
+import { applyMiddleware, createStore, compose } from 'redux';
+import { logger } from 'redux-logger';
+import thunk from 'redux-thunk';
+// import promise from 'redux-promise-middleware';
+import rootReducer from './reducers';
 
-const stores = {
-  dataStore,
-  uiStore,
-};
+// eslint-disable-next-line no-undef,no-underscore-dangle
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export default stores;
+// const middleware = composeEnhancers(applyMiddleware(promise(), thunk, logger));
+const middleware = composeEnhancers(applyMiddleware(thunk, logger));
+
+export default createStore(rootReducer, middleware);
