@@ -1,19 +1,26 @@
 import {
   DATA_GET_REQUEST,
-
+  SET_LOADING,
 } from '../utility/constants';
 
 const initialState = {
-  countries: ['jhhgjg'],
+  countries: [],
   news: [],
+  isLoading: false,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case DATA_GET_REQUEST:
+    case SET_LOADING:
       return {
         ...state,
         isLoading: true,
+      };
+    case DATA_GET_REQUEST:
+      return {
+        ...state,
+        isLoading: false,
+        news: action.payload,
       };
     default:
       return state;
