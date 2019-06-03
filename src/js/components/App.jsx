@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { DATA_GET_REQUEST, SET_LOADING } from '../store/utility/constants';
@@ -24,16 +24,18 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // news.news.length <= 0 && dispatch({ type: SET_LOADING });
-    // getSources()
-      // .then(res => res && res.ok && dispatch({ type : DATA_GET_REQUEST}));
-
-    // dispatch({ type: SET_LOADING });
-    // fetch('https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=f3907ccd45504feea10309a6931c52d8')
-    // fetchData()
-    // getSources()
-    //   .then(res => console.log(res));
-  });
+    // dispatch({
+    //   type: SET_LOADING,
+    //   isLoading: true,
+    // });
+    getSources()
+      .then(res => res && res.ok && res.json())
+      .then(res => dispatch({
+        type: DATA_GET_REQUEST,
+        isLoading: true,
+        payload: res.sources,
+      }));
+  }, [news.countries.length !== 0, news.isLoading]);
 
   return (
     <Container>
