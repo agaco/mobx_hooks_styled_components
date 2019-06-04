@@ -8,7 +8,7 @@ import Header from './Header';
 import Main from './MainComponent'
 
 import { fetchData, getSources } from '../../api/config';
-
+import { getVendorsList } from './../store/actions';
 
 const Container = styled(CommonContainer)`
   flex-direction: column;
@@ -24,23 +24,29 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch({
-    //   type: SET_LOADING,
-    //   isLoading: true,
-    // });
-    getSources()
-      .then(res => res && res.ok && res.json())
-      .then(res => dispatch({
-        type: DATA_GET_REQUEST,
-        isLoading: true,
-        payload: res.sources,
-      }));
-  }, [news.countries.length !== 0, news.isLoading]);
+    dispatch({
+      type: SET_LOADING,
+      isLoading: true,
+    });
+  }, [news.countries.length == 0 && news.isLoading]);
+
+  useEffect(() => {
+    getVendorsList(dispatch)
+    // getSources()
+      // .then(res => res && res.ok && res.json())
+      // .then(res => dispatch({
+      //   type: DATA_GET_REQUEST,
+      //   isLoading: true,
+      //   payload: res.sources,
+      // }));
+  }, [news.countries.length == 0 && news.isLoading]);
+
+
 
   return (
     <Container>
       {
-        console.log(news)
+        // console.log(news)
       }
       <Header />
       <Main />
