@@ -4,7 +4,8 @@ import {
 } from '../utility/constants';
 
 const initialState = {
-  countries: [],
+  sources: [],
+  sources_categories: [],
   news: [],
   isLoading: false,
 };
@@ -20,7 +21,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        countries: action.payload,
+        sources: action.payload,
+        sources_categories: action.categories,
       };
     default:
       return state;

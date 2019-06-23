@@ -1,54 +1,34 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
-import { DATA_GET_REQUEST, SET_LOADING } from '../store/utility/constants';
 
-import CommonContainer from '../CommonComponents/Container';
+import { Container } from './styled';
 import Header from './Header';
 import Main from './MainComponent'
 
-import { fetchData, getSources } from '../../api/config';
-import { getVendorsList } from './../store/actions';
-
-const Container = styled(CommonContainer)`
-  flex-direction: column;
-  flex: 1;
-  min-height: 100vh;
-  flex-basis: 100%;
-  justify-content: space-between;
-`;
+import { getVendorsList } from '../store/actions';
 
 function App() {
-
   const news = useSelector(state => state.news);
+  const isLoading = useSelector(state => state.news.isLoading);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({
-      type: SET_LOADING,
-      isLoading: true,
-    });
-  }, [news.countries.length == 0 && news.isLoading]);
-
-  useEffect(() => {
-    getVendorsList(dispatch)
-    // getSources()
-      // .then(res => res && res.ok && res.json())
-      // .then(res => dispatch({
-      //   type: DATA_GET_REQUEST,
-      //   isLoading: true,
-      //   payload: res.sources,
-      // }));
-  }, [news.countries.length == 0 && news.isLoading]);
-
-
+    getVendorsList(dispatch);
+  }, []);
+  const sportsCategory = news && news.sources.length > 0 && news.sources.filter(item => item.category === 'sports');
 
   return (
-    <Container>
-      {
-        // console.log(news)
-      }
+    <Container isLoading={isLoading}>
       <Header />
+      {
+        sportsCategory.length > 0 && sportsCategory.map((item, index) => {
+          return (
+            <div key={index}>{item.name}</div>
+          )
+        })
+      }
+
       <Main />
     </Container>
   )
