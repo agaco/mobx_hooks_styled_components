@@ -1,4 +1,6 @@
 import App from './App';
 
-console.log("test inner logic")
+const test = () => console.log("test innejjr logic");
+
+
 export default App;

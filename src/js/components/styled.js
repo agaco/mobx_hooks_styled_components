@@ -7,7 +7,7 @@ const Container = styled(CommonContainer)`
   flex: 1;
   min-height: 100vh;
   flex-basis: 100%;
-  justify-content: space-between;
+  justify-content: flex-start;
 `;
 
 export {
