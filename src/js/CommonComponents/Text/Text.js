@@ -22,4 +22,9 @@ Text.propTypes = {
   ]),
 };
 
+Text.defaultProps = {
+  text: '',
+  children: '',
+};
+
 export default Text;
