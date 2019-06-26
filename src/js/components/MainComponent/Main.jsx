@@ -10,9 +10,12 @@ function Main() {
   const categories = useSelector(state => state.news.sources_categories);
   const sources = useSelector(state => state.news.sources);
   const [category, setCategory] = useState('');
+  const [descriptionStatus, toggleDescriptionStatus] = useState(false);
   const filteredSources = category !== '' ? sources.filter(item => item.category === category) : [];
 
-
+// function toggleDescriptonText (value) {
+//   toggleDescriptionStatus(!descriptionStatus)
+// }
   return (
   <Container>
       <ButtonToolbar>
@@ -39,8 +42,8 @@ function Main() {
             <Card key={item.id}>
               <CardBlock>
                 <CardTitle>{item.name}</CardTitle>
-                <CardText>{item.description}</CardText>
-                <Button>show news</Button>
+                <CardText>{!descriptionStatus ? item.description.slice(0,100).trim().concat('...') : item.description}</CardText>
+                <Button onClick={() => toggleDescriptionStatus(!descriptionStatus)}> show more</Button>
               </CardBlock>
             </Card>
           )
