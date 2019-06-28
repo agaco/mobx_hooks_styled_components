@@ -9,6 +9,15 @@ const Container = styled(CommonContainer)`
   justify-content: flex-start;
 `;
 
+const Wrapper = styled(CommonContainer)`
+  flex-direction: row;
+  //background: red;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 1px solid grey;
+`;
+
 export {
   Container,
+  Wrapper,
 };

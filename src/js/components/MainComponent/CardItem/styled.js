@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-
+import { CardTitle } from '@bootstrap-styled/v4';
 import CommonText from '../../../CommonComponents/Text';
-// import { Button } from '@bootstrap-styled/v4';
+
 
 const Button = styled(CommonText)`
  color: green;  
@@ -10,7 +10,11 @@ const Button = styled(CommonText)`
   display: none; 
   `}
 `;
-
+const Title = styled(CardTitle)`
+min-height: 45px;
+font-size: 25px;
+`;
 export {
   Button,
+  Title,
 };
