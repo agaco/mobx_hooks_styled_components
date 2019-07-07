@@ -1,9 +1,9 @@
 import { apiKEY, apiURL } from './index';
 
 
-const fetchData = async () => {
+const getDataByHeadline = async (source) => {
   const response = await fetch(
-    `${apiURL}top-headlines?sources=bbc-news`,
+    `${apiURL}top-headlines?sources=${source}`,
     {
       headers: { 'X-Api-Key': apiKEY },
     },
@@ -25,6 +25,6 @@ const getSources = async () => {
 
 
 export {
-  fetchData,
+  getDataByHeadline,
   getSources,
 };

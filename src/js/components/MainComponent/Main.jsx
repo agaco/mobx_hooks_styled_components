@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import CategoriesList from './CategoriesList';
 import Card from './CardItem';
-import { Container, CardGroup } from '@bootstrap-styled/v4';
+import { Container } from '@bootstrap-styled/v4';
 import {
   Wrapper,
 } from './styled';

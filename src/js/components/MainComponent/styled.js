@@ -11,10 +11,8 @@ const Container = styled(CommonContainer)`
 
 const Wrapper = styled(CommonContainer)`
   flex-direction: row;
-  //background: red;
   flex-wrap: wrap;
-  justify-content: space-between;
-  border: 1px solid grey;
+  justify-content: center;
 `;
 
 export {

@@ -1,4 +1,5 @@
 
 
 export const DATA_GET_REQUEST = 'DATA_GET_REQUEST';
+export const DATA_GET_BY_HEADLINE = 'DATA_GET_BY_HEADLINE';
 export const SET_LOADING = 'SET_LOADING';
